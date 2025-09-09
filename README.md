@@ -1,8 +1,22 @@
 # Sprint 1: TypeScript CSV
 
-### Task C: Proposing Enhancement
+### Task B: Proposing Enhancement
 
 - #### Step 1: Brainstorm on your own.
+
+Functionality
+- Having fields with commas inside of them
+- Some CSVs may be comma separated and others may be comma + whitespace seperated. Should we trim off leading and trailing whitespace between the columns?
+- What about single quotes, should they be treated like double quotes?
+- What if two contiguous columns end in a double quote? ex: hello",bye"
+- What if the quote doesn't have a closing quote. Should that be allowed or should quotes be a special character that is used to identify a string.
+- Do all rows need to have the same number of columns?
+
+Extensibility
+- Escape characters so we can write special characters like quotes without triggering unintended consequences.
+- Throw an error when CSV is in an invalid format.
+- Allow users to specify if the first row is a header.
+- Allow users to stream the CSV in case the file is really big and it can't all be loaded into memory.
 
 - #### Step 2: Use an LLM to help expand your perspective.
 
