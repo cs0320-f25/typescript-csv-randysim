@@ -2,6 +2,7 @@ import { parseCSV } from "../src/basic-parser";
 import * as path from "path";
 
 const PEOPLE_CSV_PATH = path.join(__dirname, "../data/people.csv");
+const QUOTES_CSV_PATH = path.join(__dirname, "../data/quotes.csv");
 
 test("parseCSV yields arrays", async () => {
   const results = await parseCSV(PEOPLE_CSV_PATH)
@@ -20,3 +21,11 @@ test("parseCSV yields only arrays", async () => {
     expect(Array.isArray(row)).toBe(true);
   }
 });
+
+// test for commas in quotes
+test("parseCSV handles commas in quotes", async () => {
+  const results = await parseCSV(QUOTES_CSV_PATH)
+  for (const row of results) {
+    expect(row.length).toBe(2)
+  }
+})
