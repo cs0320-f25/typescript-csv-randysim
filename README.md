@@ -6,10 +6,16 @@
 
 Functionality
     - Having fields with commas inside of them
-    - Some CSVs may be comma separated and others may be comma + whitespace seperated. Should we trim off leading and trailing whitespace between the columns?
+    
+    - Some CSVs may be comma separated and others may be comma
+     + whitespace seperated. Should we trim off leading and trailing whitespace between the columns?
+
     - What about single quotes, should they be treated like double quotes?
+
     - What if two contiguous columns end in a double quote? ex: hello",bye"
+    
     - What if the quote doesn't have a closing quote. Should that be allowed or should quotes be a special character that is used to identify a string.
+    
     - Do all rows need to have the same number of columns?
 
 Extensibility
