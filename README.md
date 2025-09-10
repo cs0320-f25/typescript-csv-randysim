@@ -81,6 +81,8 @@
 
 #### Team members and contributions (include cs logins):
 
+rsim2 - solo sprint
+
 #### Collaborators (cslogins of anyone you worked with on this project and/or generative AI):
 
 I used github copilot to complete Step 2 (expanding my perspective), and to help me figure out how to have my function signature's return type reflect what was given in the parameter (conditionally). The chats are in chats/
