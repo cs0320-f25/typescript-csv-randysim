@@ -6,7 +6,7 @@ const QUOTES_CSV_PATH = path.join(__dirname, "../data/quotes.csv");
 const EMPTY_CSV_PATH = path.join(__dirname, "../data/empty.csv")
 
 test("parseCSV yields arrays", async () => {
-  const results = await parseCSV(PEOPLE_CSV_PATH)
+  const results = await parseCSV(PEOPLE_CSV_PATH, undefined)
   
   expect(results).toHaveLength(5);
   expect(results[0]).toEqual(["name", "age"]);
@@ -17,7 +17,7 @@ test("parseCSV yields arrays", async () => {
 });
 
 test("parseCSV yields only arrays", async () => {
-  const results = await parseCSV(PEOPLE_CSV_PATH)
+  const results = await parseCSV(PEOPLE_CSV_PATH, undefined)
   for(const row of results) {
     expect(Array.isArray(row)).toBe(true);
   }
@@ -25,14 +25,14 @@ test("parseCSV yields only arrays", async () => {
 
 // test for commas in quotes
 test("parseCSV handles commas in quotes", async () => {
-  const results = await parseCSV(QUOTES_CSV_PATH)
+  const results = await parseCSV(QUOTES_CSV_PATH, undefined)
   for (const row of results) {
     expect(row.length).toBe(2)
   }
 })
 
 test("parseCSV handles empty items", async () => {
-  const results = await parseCSV(EMPTY_CSV_PATH);
+  const results = await parseCSV(EMPTY_CSV_PATH, undefined);
   for (const row of results) {
     expect(row.length).toBe(4)
   }
