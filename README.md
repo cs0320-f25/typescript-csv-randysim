@@ -41,15 +41,22 @@
     - Schema validation: Allow developers to specify expected column types and validate against them
     - Detailed error reporting: Provide line numbers, column positions, and specific error descriptions
 
-- #### Note:
-  - The AI was quite effective in making suggestions. Not only was there significant overlap, but it thought of way more scenarios than I could have. It came up with even more, but it was taking up too much README space.
-  - After modifying 
+  - #### Note:
+    - The AI was quite effective in making suggestions. Not only was there significant overlap, but it thought of way more scenarios than I could have.
+    - I modified the prompt to 1) Make the list more comprehensive in which it brought more use cases such as async, streaming, memory efficiency in large datasets and 2) Make it more simple, where it only gave me the core features such as delimeters, data type, 
 
 - #### Step 3: use an LLM to help expand your perspective.
 
     Include a list of the top 4 enhancements or edge cases you think are most valuable to explore in the next week’s sprint. Label them clearly by category (extensibility vs. functionality), and include whether they came from you, the LLM, or both. Describe these using the User Story format—see below for a definition. 
 
     Include your notes from above: what were your initial ideas, what did the LLM suggest, and how did the results differ by prompt? What resonated with you, and what didn’t? (3-5 sentences.) 
+
+- Top 4 Enhancements
+  - 1) As a user, I can use quotes within my fields in any manner. However, I can also define a field by wrapping quotes around it so that I can include delimeters in my field.
+  - 2) As a user, I would want leading and trailing whitespaces deleted for each column.
+  - 3) As a user, I would want the CSV parser to support line endings like \r\n or \n to support multiple operating systems.
+  - 4) As a user, I would want to be able to use streams on the CSV data and process it in chunks instead of loading it all at once so I can process big files without running out of memory.
+  - I initially came up with handling and escaping quotes, handling commas inside of fields, handling whitespaces, streaming, column count, error handling, and headers. The LLM suggested all of that but more. The big ideas resonated with me, but I feel like it just brain dumped all its ideas all at once. In a real setting, I feel like this would be overwhelming for a team working on a product. 
 
 ### Design Choices
 
