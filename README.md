@@ -74,5 +74,10 @@
 #### Team members and contributions (include cs logins):
 
 #### Collaborators (cslogins of anyone you worked with on this project and/or generative AI):
+
+Generative AI (CSV suggestions, Zod syntax)
+
 #### Total estimated time it took to complete project:
 #### Link to GitHub Repo:  
+
+https://github.com/cs0320-f25/typescript-csv-randysim
