@@ -23,7 +23,7 @@ export type Person = z.infer<typeof PersonRowSchema>;
 export async function parseCSV<T extends z.ZodType>(
   path: string,
   schema: T
-): Promise<z.infer<T>>;
+): Promise<z.infer<T>[]>;
 
 export async function parseCSV(
   path: string,

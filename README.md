@@ -69,15 +69,26 @@
 - #### 3. Overall experience, Bugs encountered and resolved
 #### Errors/Bugs:
 #### Tests:
+
+- parseCSV outputs an array given no schema.
+- parseCSV outputs only arrays given no schema.
+- parseCSV handles commas in quotes.
+- parseCSV handles empty items.
+- parseCSV handles a valid zod schema.
+- parseCSV handles an invalid zod schema by throwing an error.
+
 #### How To…
 
 #### Team members and contributions (include cs logins):
 
 #### Collaborators (cslogins of anyone you worked with on this project and/or generative AI):
 
-Generative AI (CSV suggestions, Zod syntax)
+I used github copilot to complete Step 2 (expanding my perspective), and to help me figure out how to have my function signature's return type reflect what was given in the parameter (conditionally). The chats are in chats/
 
 #### Total estimated time it took to complete project:
+
+6 hours
+
 #### Link to GitHub Repo:  
 
 https://github.com/cs0320-f25/typescript-csv-randysim

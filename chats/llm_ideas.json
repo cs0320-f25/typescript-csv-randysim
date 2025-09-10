@@ -1,0 +1,548 @@
+{
+  "requesterUsername": "randysim",
+  "requesterAvatarIconUri": {
+    "$mid": 1,
+    "path": "/u/57469078",
+    "scheme": "https",
+    "authority": "avatars.githubusercontent.com",
+    "query": "v=4"
+  },
+  "responderUsername": "GitHub Copilot",
+  "responderAvatarIconUri": {
+    "id": "copilot"
+  },
+  "initialLocation": "panel",
+  "requests": [
+    {
+      "requestId": "request_f124a16f-ea55-4a7c-876d-4b674ad5ab28",
+      "message": {
+        "text": "I’m working on a CSV parser in TypeScript that currently accepts a filename as input and converts rows into strings or objects. What are some missing features or edge cases that I should consider? What improvements would make it easier for other developers to use in different kinds of apps?",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 291
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 292
+            },
+            "text": "I’m working on a CSV parser in TypeScript that currently accepts a filename as input and converts rows into strings or objects. What are some missing features or edge cases that I should consider? What improvements would make it easier for other developers to use in different kinds of apps?",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Based on your CSV parser project, here are some missing features and edge cases to consider:\n\n## Missing Features & Edge Cases\n\n### **Input/Output Flexibility**\n- **Stream support**: Handle large files without loading everything into memory\n- **Multiple input sources**: Accept strings, Buffers, URLs, or streams instead of just filenames\n- **Output formats**: Support arrays, Maps, or custom object types beyond strings/objects\n\n### **CSV Format Edge Cases**\n- **Quoted fields with commas**: `\"Last, First\",Age,City`\n- **Escaped quotes**: `\"He said \"\"Hello\"\"\",Message`\n- **Multi-line fields**: Quoted fields spanning multiple lines\n- **Different delimiters**: Semicolons, tabs, pipes (`|`)\n- **Custom quote characters**: Single quotes or other characters\n- **Mixed line endings**: `\\r\\n`, `\\n`, `\\r`\n\n### **Data Validation & Type Safety**\n- **Schema validation**: Ensure columns match expected types\n- **Required field checking**: Validate mandatory columns exist\n- **Type coercion**: Auto-convert strings to numbers, dates, booleans\n- **Custom transformers**: Apply functions to specific columns\n\n### **Developer Experience Improvements**\n- **TypeScript generics**: `parse<T>()` for type-safe output\n- **Async/Promise support**: Non-blocking parsing for large files\n- **Progress callbacks**: Track parsing progress for UX\n- **Error handling**: Detailed error messages with line/column info\n- **Configurable options**: Header detection, skip empty rows, trim whitespace\n\n### **Performance & Memory**\n- **Lazy parsing**: Parse rows on-demand rather than all at once\n- **Chunked processing**: Process files in smaller batches\n- **Memory limits**: Prevent out-of-memory errors on huge files\n\n### **API Design Suggestions**\n````typescript\ninterface CSVOptions<T = any> {\n  delimiter?: string;\n  quote?: string;\n  headers?: boolean | string[];\n  skipEmptyLines?: boolean;\n  transform?: (row: any) => T;\n  validate?: (row: T) => boolean;\n}\n\n// More flexible API\nconst parser = new CSVParser(options);\nconst results = await parser.parseFile<MyType>('data.csv');\nconst stream = parser.parseStream(inputStream);\n````\n\nThese improvements would make your parser more robust and developer-friendly across different use cases.",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/randy/brown/cs32/typescript-csv-randysim/",
+            "scheme": "vscode-remote",
+            "authority": "wsl+Ubuntu"
+          }
+        }
+      ],
+      "responseId": "response_d55af339-e148-4357-90ce-2b951722e796",
+      "result": {
+        "timings": {
+          "firstProgress": 1576,
+          "totalElapsed": 21861
+        },
+        "metadata": {
+          "codeBlocks": [
+            {
+              "code": "interface CSVOptions<T = any> {\n  delimiter?: string;\n  quote?: string;\n  headers?: boolean | string[];\n  skipEmptyLines?: boolean;\n  transform?: (row: any) => T;\n  validate?: (row: T) => boolean;\n}\n\n// More flexible API\nconst parser = new CSVParser(options);\nconst results = await parser.parseFile<MyType>('data.csv');\nconst stream = parser.parseStream(inputStream);\n",
+              "language": "typescript",
+              "markdownBeforeBlock": "Based on your CSV parser project, here are some missing features and edge cases to consider:\n\n## Missing Features & Edge Cases\n\n### **Input/Output Flexibility**\n- **Stream support**: Handle large files without loading everything into memory\n- **Multiple input sources**: Accept strings, Buffers, URLs, or streams instead of just filenames\n- **Output formats**: Support arrays, Maps, or custom object types beyond strings/objects\n\n### **CSV Format Edge Cases**\n- **Quoted fields with commas**: `\"Last, First\",Age,City`\n- **Escaped quotes**: `\"He said \"\"Hello\"\"\",Message`\n- **Multi-line fields**: Quoted fields spanning multiple lines\n- **Different delimiters**: Semicolons, tabs, pipes (`|`)\n- **Custom quote characters**: Single quotes or other characters\n- **Mixed line endings**: `\\r\\n`, `\\n`, `\\r`\n\n### **Data Validation & Type Safety**\n- **Schema validation**: Ensure columns match expected types\n- **Required field checking**: Validate mandatory columns exist\n- **Type coercion**: Auto-convert strings to numbers, dates, booleans\n- **Custom transformers**: Apply functions to specific columns\n\n### **Developer Experience Improvements**\n- **TypeScript generics**: `parse<T>()` for type-safe output\n- **Async/Promise support**: Non-blocking parsing for large files\n- **Progress callbacks**: Track parsing progress for UX\n- **Error handling**: Detailed error messages with line/column info\n- **Configurable options**: Header detection, skip empty rows, trim whitespace\n\n### **Performance & Memory**\n- **Lazy parsing**: Parse rows on-demand rather than all at once\n- **Chunked processing**: Process files in smaller batches\n- **Memory limits**: Prevent out-of-memory errors on huge files\n\n### **API Design Suggestions**\n"
+            }
+          ],
+          "toolCallRounds": [
+            {
+              "response": "Based on your CSV parser project, here are some missing features and edge cases to consider:\n\n## Missing Features & Edge Cases\n\n### **Input/Output Flexibility**\n- **Stream support**: Handle large files without loading everything into memory\n- **Multiple input sources**: Accept strings, Buffers, URLs, or streams instead of just filenames\n- **Output formats**: Support arrays, Maps, or custom object types beyond strings/objects\n\n### **CSV Format Edge Cases**\n- **Quoted fields with commas**: `\"Last, First\",Age,City`\n- **Escaped quotes**: `\"He said \"\"Hello\"\"\",Message`\n- **Multi-line fields**: Quoted fields spanning multiple lines\n- **Different delimiters**: Semicolons, tabs, pipes (`|`)\n- **Custom quote characters**: Single quotes or other characters\n- **Mixed line endings**: `\\r\\n`, `\\n`, `\\r`\n\n### **Data Validation & Type Safety**\n- **Schema validation**: Ensure columns match expected types\n- **Required field checking**: Validate mandatory columns exist\n- **Type coercion**: Auto-convert strings to numbers, dates, booleans\n- **Custom transformers**: Apply functions to specific columns\n\n### **Developer Experience Improvements**\n- **TypeScript generics**: `parse<T>()` for type-safe output\n- **Async/Promise support**: Non-blocking parsing for large files\n- **Progress callbacks**: Track parsing progress for UX\n- **Error handling**: Detailed error messages with line/column info\n- **Configurable options**: Header detection, skip empty rows, trim whitespace\n\n### **Performance & Memory**\n- **Lazy parsing**: Parse rows on-demand rather than all at once\n- **Chunked processing**: Process files in smaller batches\n- **Memory limits**: Prevent out-of-memory errors on huge files\n\n### **API Design Suggestions**\n````typescript\ninterface CSVOptions<T = any> {\n  delimiter?: string;\n  quote?: string;\n  headers?: boolean | string[];\n  skipEmptyLines?: boolean;\n  transform?: (row: any) => T;\n  validate?: (row: T) => boolean;\n}\n\n// More flexible API\nconst parser = new CSVParser(options);\nconst results = await parser.parseFile<MyType>('data.csv');\nconst stream = parser.parseStream(inputStream);\n````\n\nThese improvements would make your parser more robust and developer-friendly across different use cases.",
+              "toolCalls": [],
+              "toolInputRetry": 0,
+              "id": "b2dd5da6-c7be-4a88-a7e3-2ef9ef10f284"
+            }
+          ],
+          "modelMessageId": "91feb8b0-ab06-4244-a8a6-7e51fca67a76",
+          "responseId": "75a27008-d601-4535-b87d-08128b6b6516",
+          "sessionId": "6e5a394a-03d0-4a88-ab72-790e1021e4d0",
+          "agentId": "github.copilot.default"
+        },
+        "details": "Claude Sonnet 4 • 1x"
+      },
+      "followups": [],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.default",
+        "description": "Ask or edit in context",
+        "metadata": {
+          "themeIcon": {
+            "id": "copilot"
+          },
+          "hasFollowups": false,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following participants which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted) in [Visual Studio Code](https://code.visualstudio.com/docs/copilot/overview). Or explore the [Copilot walkthrough](command:github.copilot.open.walkthrough).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start",
+                "github.copilot.open.walkthrough"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted": {
+                "$mid": 1,
+                "path": "/copilot/using-github-copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted"
+              },
+              "https://code.visualstudio.com/docs/copilot/overview": {
+                "$mid": 1,
+                "path": "/docs/copilot/overview",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              },
+              "command:github.copilot.open.walkthrough": {
+                "$mid": 1,
+                "path": "github.copilot.open.walkthrough",
+                "scheme": "command"
+              }
+            }
+          },
+          "supportIssueReporting": false,
+          "requester": {
+            "name": "randysim",
+            "icon": {
+              "$mid": 1,
+              "path": "/u/57469078",
+              "scheme": "https",
+              "authority": "avatars.githubusercontent.com",
+              "query": "v=4"
+            }
+          }
+        },
+        "name": "GitHubCopilot",
+        "fullName": "GitHub Copilot",
+        "isDefault": true,
+        "locations": [
+          "panel"
+        ],
+        "modes": [
+          "ask"
+        ],
+        "slashCommands": [],
+        "disambiguation": [
+          {
+            "category": "generate_code_sample",
+            "description": "The user wants to generate code snippets without referencing the contents of the current workspace. This category does not include generating entire projects.",
+            "examples": [
+              "Write an example of computing a SHA256 hash."
+            ]
+          },
+          {
+            "category": "add_feature_to_file",
+            "description": "The user wants to change code in a file that is provided in their request, without referencing the contents of the current workspace. This category does not include generating entire projects.",
+            "examples": [
+              "Add a refresh button to the table widget."
+            ]
+          },
+          {
+            "category": "question_about_specific_files",
+            "description": "The user has a question about a specific file or code snippet that they have provided as part of their query, and the question does not require additional workspace context to answer.",
+            "examples": [
+              "What does this file do?"
+            ]
+          }
+        ]
+      },
+      "contentReferences": [],
+      "codeCitations": [],
+      "timestamp": 1757468164467,
+      "modelId": "copilot/claude-sonnet-4"
+    },
+    {
+      "requestId": "request_d45e0cdb-4725-47d7-a58c-bf1e7f18957d",
+      "message": {
+        "text": "Can you give me an even more exhaustive list",
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 44
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 45
+            },
+            "text": "Can you give me an even more exhaustive list",
+            "kind": "text"
+          }
+        ]
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Here's a comprehensive, exhaustive list of features and considerations for a production-ready CSV parser:\n\n## **Core Parsing Features**\n\n### **Field Delimiters & Separators**\n- **Custom delimiters**: comma, semicolon, tab, pipe, space, custom characters\n- **Multi-character delimiters**: `||`, `::`, `-->`\n- **Delimiter auto-detection**: Analyze sample data to guess delimiter\n- **Mixed delimiters**: Different delimiters per row (non-standard but exists)\n- **Delimiter escaping**: Handle delimiters within quoted fields\n\n### **Quote Handling**\n- **Custom quote characters**: `\"`, `'`, `` ` ``, `[`, `]`\n- **Quote escaping methods**: Double quotes `\"\"`, backslash `\\\"`, custom escape chars\n- **Unmatched quotes**: Handle malformed quoting gracefully\n- **Quote-in-quote scenarios**: Nested or mixed quote types\n- **Optional quoting**: Fields that may or may not be quoted\n\n### **Line Endings & Structure**\n- **All line ending types**: `\\n`, `\\r\\n`, `\\r`, `\\u2028`, `\\u2029`\n- **Mixed line endings**: Different endings within same file\n- **No final newline**: Files ending without line terminator\n- **Empty lines**: Skip, preserve, or treat as records\n- **Comment lines**: Lines starting with `#`, ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/randy/brown/cs32/typescript-csv-randysim/",
+            "scheme": "vscode-remote",
+            "authority": "wsl+Ubuntu"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "$mid": 1,
+            "external": "vscode-remote://wsl%2Bubuntu/",
+            "path": "/",
+            "scheme": "vscode-remote",
+            "authority": "wsl+Ubuntu"
+          }
+        },
+        {
+          "value": ", or custom prefixes\n\n## **Data Type Handling**\n\n### **Type Detection & Coercion**\n- **Automatic type inference**: Numbers, booleans, dates, nulls\n- **Custom type parsers**: Currency, percentages, scientific notation\n- **Locale-aware parsing**: Different decimal separators (`,` vs `.`)\n- **Date format detection**: ISO, US, European, custom formats\n- **Boolean variations**: `true/false`, `1/0`, `yes/no`, `on/off`\n- **Null value handling**: `null`, `NULL`, `nil`, `N/A`, empty strings\n\n### **Number Parsing**\n- **Thousand separators**: `,`, `.`, space, `'`\n- **Scientific notation**: `1.23e-4`, `1E+6`\n- **Infinity and NaN**: Handle special numeric values\n- **Currency symbols**: `$`, `€`, `£`, etc.\n- **Percentage handling**: `25%` → `0.25` or `25`\n- **Negative number formats**: `(100)`, `-100`, `100-`\n\n## **Memory & Performance**\n\n### **Streaming & Large Files**\n- **Streaming parser**: Process without loading entire file\n- **Backpressure handling**: Control memory usage in streams\n- **Chunked processing**: Process N rows at a time\n- **Memory limits**: Configurable max memory usage\n- **Lazy evaluation**: Parse only when data is accessed\n- **Worker thread support**: Parse in background threads\n\n### **Performance Optimizations**\n- **Buffer pooling**: Reuse memory buffers\n- **String interning**: Reuse common string values\n- **Fast path parsing**: Optimized path for simple cases\n- **SIMD optimizations**: Vectorized parsing where possible\n- **Caching**: Cache parsed results, type detection\n\n## **Input/Output Flexibility**\n\n### **Input Sources**\n- **File paths**: Local filesystem\n- **URLs**: HTTP/HTTPS remote files\n- **Streams**: Readable streams, Node.js streams\n- **Buffers**: Raw binary data\n- **Strings**: In-memory CSV content\n- **Blobs**: Browser File API\n- **ZIP archives**: Parse CSV files within archives\n- **Compressed files**: gzip, bzip2, etc.\n\n### **Output Formats**\n- **Arrays**: `string[][]`, `object[]`\n- **Maps**: `Map<string, any>[]`\n- **Iterators**: Lazy iteration over results\n- **Streams**: Transform streams for chaining\n- **Custom objects**: User-defined classes\n- **JSON**: Direct JSON output\n- **Database inserts**: SQL generation\n\n## **Validation & Error Handling**\n\n### **Schema Validation**\n- **Column count validation**: Ensure consistent field counts\n- **Required fields**: Mark columns as mandatory\n- **Type constraints**: Validate field types match schema\n- **Value constraints**: Min/max, regex patterns, enums\n- **Cross-field validation**: Validate relationships between columns\n- **Custom validators**: User-defined validation functions\n\n### **Error Handling & Recovery**\n- **Detailed error messages**: Line numbers, column positions, context\n- **Error recovery**: Continue parsing after errors\n- **Partial results**: Return successfully parsed rows\n- **Error collection**: Collect all errors instead of failing fast\n- **Warnings**: Non-fatal issues like type coercion\n- **Error callbacks**: Custom error handling\n\n## **Headers & Metadata**\n\n### **Header Handling**\n- **Auto-detection**: Detect if first row contains headers\n- **Custom headers**: Provide headers programmatically\n- **Multi-row headers**: Headers spanning multiple rows\n- **Duplicate header handling**: Rename or merge duplicates\n- **Header validation**: Ensure headers match expected schema\n- **Case sensitivity**: Case-insensitive header matching\n\n### **Metadata Support**\n- **File encoding detection**: UTF-8, UTF-16, Latin-1, etc.\n- **BOM handling**: Strip byte order marks\n- **File statistics**: Row count, column count, file size\n- **Parse timing**: Performance metrics\n- **Source tracking**: Remember which file/line data came from\n\n## **Advanced Features**\n\n### **Internationalization**\n- **Encoding support**: All common text encodings\n- **Locale-aware parsing**: Numbers, dates, currencies\n- **RTL text handling**: Right-to-left languages\n- **Unicode normalization**: Handle different Unicode forms\n- **Character replacement**: Handle invalid characters\n\n### **Security & Safety**\n- **Input sanitization**: Prevent injection attacks\n- **Memory limits**: Prevent DoS via large files\n- **Timeout handling**: Prevent infinite parsing\n- **Trusted types**: TypeScript strict type checking\n- **Content validation**: Prevent malicious CSV content\n\n## **Developer Experience**\n\n### **API Design**\n- **Fluent interface**: Chainable configuration methods\n- **TypeScript generics**: Type-safe parsing with `parse<T>()`\n- **Promise/async support**: Non-blocking operations\n- **Event emitters**: Progress, error, and completion events\n- **Middleware system**: Pluggable processing pipeline\n- **Configuration inheritance**: Default configs with overrides\n\n### **Testing & Debugging**\n- **Debug mode**: Verbose logging and tracing\n- **Parse tree inspection**: Examine internal parser state\n- **Test utilities**: Helpers for writing tests\n- **Sample data generation**: Create test CSV files\n- **Benchmarking tools**: Performance measurement utilities\n\n### **Documentation & Examples**\n- **Interactive docs**: Live examples and playground\n- **Migration guides**: Help upgrading between versions\n- **Recipe collection**: Common use case examples\n- **Performance guides**: Optimization best practices\n- **Error catalog**: Common errors and solutions\n\n## **Integration Features**\n\n### **Framework Support**\n- **Node.js streams**: Full streaming API compatibility\n- **Browser support**: File API, Web Workers, ServiceWorkers\n- **Database integration**: Direct to SQL, MongoDB, etc.\n- **Cloud services**: S3, Azure Blob, Google Cloud Storage\n- **Excel compatibility**: Handle Excel CSV exports\n\n### **Ecosystem Integration**\n- **Bundler optimization**: Tree shaking, code splitting\n- **TypeScript definitions**: Complete type definitions\n- **ESM/CommonJS**: Support both module systems\n- **CLI tool**: Command-line interface for batch processing\n- **Plugin system**: Third-party extensions\n\n## **Quality & Reliability**\n\n### **Standards Compliance**\n- **RFC 4180**: Full CSV standard compliance\n- **Excel compatibility**: Handle Excel's CSV quirks\n- **Google Sheets**: Support Google's CSV format variations\n- **Legacy format support**: Handle old/broken CSV formats\n\n### **Testing & Validation**\n- **Comprehensive test suite**: Edge cases, performance tests\n- **Fuzzing**: Random input testing\n- **Compatibility testing**: Multiple Node.js/browser versions\n- **Real-world data testing**: Test against actual CSV files\n- **Regression testing**: Prevent feature breakage\n\nThis exhaustive list covers virtually every aspect of CSV parsing that you might encounter in production environments. Implementing all of these would create an enterprise-grade CSV parser suitable for any use case.",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/randy/brown/cs32/typescript-csv-randysim/",
+            "scheme": "vscode-remote",
+            "authority": "wsl+Ubuntu"
+          }
+        }
+      ],
+      "responseId": "response_adf958bc-554c-4895-9b07-1449c15359ce",
+      "result": {
+        "timings": {
+          "firstProgress": 1210,
+          "totalElapsed": 39563
+        },
+        "metadata": {
+          "codeBlocks": [],
+          "toolCallRounds": [
+            {
+              "response": "Here's a comprehensive, exhaustive list of features and considerations for a production-ready CSV parser:\n\n## **Core Parsing Features**\n\n### **Field Delimiters & Separators**\n- **Custom delimiters**: comma, semicolon, tab, pipe, space, custom characters\n- **Multi-character delimiters**: `||`, `::`, `-->`\n- **Delimiter auto-detection**: Analyze sample data to guess delimiter\n- **Mixed delimiters**: Different delimiters per row (non-standard but exists)\n- **Delimiter escaping**: Handle delimiters within quoted fields\n\n### **Quote Handling**\n- **Custom quote characters**: `\"`, `'`, `` ` ``, `[`, `]`\n- **Quote escaping methods**: Double quotes `\"\"`, backslash `\\\"`, custom escape chars\n- **Unmatched quotes**: Handle malformed quoting gracefully\n- **Quote-in-quote scenarios**: Nested or mixed quote types\n- **Optional quoting**: Fields that may or may not be quoted\n\n### **Line Endings & Structure**\n- **All line ending types**: `\\n`, `\\r\\n`, `\\r`, `\\u2028`, `\\u2029`\n- **Mixed line endings**: Different endings within same file\n- **No final newline**: Files ending without line terminator\n- **Empty lines**: Skip, preserve, or treat as records\n- **Comment lines**: Lines starting with `#`, `//`, or custom prefixes\n\n## **Data Type Handling**\n\n### **Type Detection & Coercion**\n- **Automatic type inference**: Numbers, booleans, dates, nulls\n- **Custom type parsers**: Currency, percentages, scientific notation\n- **Locale-aware parsing**: Different decimal separators (`,` vs `.`)\n- **Date format detection**: ISO, US, European, custom formats\n- **Boolean variations**: `true/false`, `1/0`, `yes/no`, `on/off`\n- **Null value handling**: `null`, `NULL`, `nil`, `N/A`, empty strings\n\n### **Number Parsing**\n- **Thousand separators**: `,`, `.`, space, `'`\n- **Scientific notation**: `1.23e-4`, `1E+6`\n- **Infinity and NaN**: Handle special numeric values\n- **Currency symbols**: `$`, `€`, `£`, etc.\n- **Percentage handling**: `25%` → `0.25` or `25`\n- **Negative number formats**: `(100)`, `-100`, `100-`\n\n## **Memory & Performance**\n\n### **Streaming & Large Files**\n- **Streaming parser**: Process without loading entire file\n- **Backpressure handling**: Control memory usage in streams\n- **Chunked processing**: Process N rows at a time\n- **Memory limits**: Configurable max memory usage\n- **Lazy evaluation**: Parse only when data is accessed\n- **Worker thread support**: Parse in background threads\n\n### **Performance Optimizations**\n- **Buffer pooling**: Reuse memory buffers\n- **String interning**: Reuse common string values\n- **Fast path parsing**: Optimized path for simple cases\n- **SIMD optimizations**: Vectorized parsing where possible\n- **Caching**: Cache parsed results, type detection\n\n## **Input/Output Flexibility**\n\n### **Input Sources**\n- **File paths**: Local filesystem\n- **URLs**: HTTP/HTTPS remote files\n- **Streams**: Readable streams, Node.js streams\n- **Buffers**: Raw binary data\n- **Strings**: In-memory CSV content\n- **Blobs**: Browser File API\n- **ZIP archives**: Parse CSV files within archives\n- **Compressed files**: gzip, bzip2, etc.\n\n### **Output Formats**\n- **Arrays**: `string[][]`, `object[]`\n- **Maps**: `Map<string, any>[]`\n- **Iterators**: Lazy iteration over results\n- **Streams**: Transform streams for chaining\n- **Custom objects**: User-defined classes\n- **JSON**: Direct JSON output\n- **Database inserts**: SQL generation\n\n## **Validation & Error Handling**\n\n### **Schema Validation**\n- **Column count validation**: Ensure consistent field counts\n- **Required fields**: Mark columns as mandatory\n- **Type constraints**: Validate field types match schema\n- **Value constraints**: Min/max, regex patterns, enums\n- **Cross-field validation**: Validate relationships between columns\n- **Custom validators**: User-defined validation functions\n\n### **Error Handling & Recovery**\n- **Detailed error messages**: Line numbers, column positions, context\n- **Error recovery**: Continue parsing after errors\n- **Partial results**: Return successfully parsed rows\n- **Error collection**: Collect all errors instead of failing fast\n- **Warnings**: Non-fatal issues like type coercion\n- **Error callbacks**: Custom error handling\n\n## **Headers & Metadata**\n\n### **Header Handling**\n- **Auto-detection**: Detect if first row contains headers\n- **Custom headers**: Provide headers programmatically\n- **Multi-row headers**: Headers spanning multiple rows\n- **Duplicate header handling**: Rename or merge duplicates\n- **Header validation**: Ensure headers match expected schema\n- **Case sensitivity**: Case-insensitive header matching\n\n### **Metadata Support**\n- **File encoding detection**: UTF-8, UTF-16, Latin-1, etc.\n- **BOM handling**: Strip byte order marks\n- **File statistics**: Row count, column count, file size\n- **Parse timing**: Performance metrics\n- **Source tracking**: Remember which file/line data came from\n\n## **Advanced Features**\n\n### **Internationalization**\n- **Encoding support**: All common text encodings\n- **Locale-aware parsing**: Numbers, dates, currencies\n- **RTL text handling**: Right-to-left languages\n- **Unicode normalization**: Handle different Unicode forms\n- **Character replacement**: Handle invalid characters\n\n### **Security & Safety**\n- **Input sanitization**: Prevent injection attacks\n- **Memory limits**: Prevent DoS via large files\n- **Timeout handling**: Prevent infinite parsing\n- **Trusted types**: TypeScript strict type checking\n- **Content validation**: Prevent malicious CSV content\n\n## **Developer Experience**\n\n### **API Design**\n- **Fluent interface**: Chainable configuration methods\n- **TypeScript generics**: Type-safe parsing with `parse<T>()`\n- **Promise/async support**: Non-blocking operations\n- **Event emitters**: Progress, error, and completion events\n- **Middleware system**: Pluggable processing pipeline\n- **Configuration inheritance**: Default configs with overrides\n\n### **Testing & Debugging**\n- **Debug mode**: Verbose logging and tracing\n- **Parse tree inspection**: Examine internal parser state\n- **Test utilities**: Helpers for writing tests\n- **Sample data generation**: Create test CSV files\n- **Benchmarking tools**: Performance measurement utilities\n\n### **Documentation & Examples**\n- **Interactive docs**: Live examples and playground\n- **Migration guides**: Help upgrading between versions\n- **Recipe collection**: Common use case examples\n- **Performance guides**: Optimization best practices\n- **Error catalog**: Common errors and solutions\n\n## **Integration Features**\n\n### **Framework Support**\n- **Node.js streams**: Full streaming API compatibility\n- **Browser support**: File API, Web Workers, ServiceWorkers\n- **Database integration**: Direct to SQL, MongoDB, etc.\n- **Cloud services**: S3, Azure Blob, Google Cloud Storage\n- **Excel compatibility**: Handle Excel CSV exports\n\n### **Ecosystem Integration**\n- **Bundler optimization**: Tree shaking, code splitting\n- **TypeScript definitions**: Complete type definitions\n- **ESM/CommonJS**: Support both module systems\n- **CLI tool**: Command-line interface for batch processing\n- **Plugin system**: Third-party extensions\n\n## **Quality & Reliability**\n\n### **Standards Compliance**\n- **RFC 4180**: Full CSV standard compliance\n- **Excel compatibility**: Handle Excel's CSV quirks\n- **Google Sheets**: Support Google's CSV format variations\n- **Legacy format support**: Handle old/broken CSV formats\n\n### **Testing & Validation**\n- **Comprehensive test suite**: Edge cases, performance tests\n- **Fuzzing**: Random input testing\n- **Compatibility testing**: Multiple Node.js/browser versions\n- **Real-world data testing**: Test against actual CSV files\n- **Regression testing**: Prevent feature breakage\n\nThis exhaustive list covers virtually every aspect of CSV parsing that you might encounter in production environments. Implementing all of these would create an enterprise-grade CSV parser suitable for any use case.",
+              "toolCalls": [],
+              "toolInputRetry": 0,
+              "id": "78e3333e-a349-41ba-a0b8-7e81f446d591"
+            }
+          ],
+          "modelMessageId": "9870fe09-9a7e-44f2-938b-b8beea07aee1",
+          "responseId": "138e9944-5b53-4ce9-803d-91bd8aa96808",
+          "sessionId": "6e5a394a-03d0-4a88-ab72-790e1021e4d0",
+          "agentId": "github.copilot.default"
+        },
+        "details": "Claude Sonnet 4 • 1x"
+      },
+      "followups": [],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.default",
+        "description": "Ask or edit in context",
+        "metadata": {
+          "themeIcon": {
+            "id": "copilot"
+          },
+          "hasFollowups": false,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following participants which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted) in [Visual Studio Code](https://code.visualstudio.com/docs/copilot/overview). Or explore the [Copilot walkthrough](command:github.copilot.open.walkthrough).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start",
+                "github.copilot.open.walkthrough"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted": {
+                "$mid": 1,
+                "path": "/copilot/using-github-copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted"
+              },
+              "https://code.visualstudio.com/docs/copilot/overview": {
+                "$mid": 1,
+                "path": "/docs/copilot/overview",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              },
+              "command:github.copilot.open.walkthrough": {
+                "$mid": 1,
+                "path": "github.copilot.open.walkthrough",
+                "scheme": "command"
+              }
+            }
+          },
+          "supportIssueReporting": false,
+          "requester": {
+            "name": "randysim",
+            "icon": {
+              "$mid": 1,
+              "path": "/u/57469078",
+              "scheme": "https",
+              "authority": "avatars.githubusercontent.com",
+              "query": "v=4"
+            }
+          }
+        },
+        "name": "GitHubCopilot",
+        "fullName": "GitHub Copilot",
+        "isDefault": true,
+        "locations": [
+          "panel"
+        ],
+        "modes": [
+          "ask"
+        ],
+        "slashCommands": [],
+        "disambiguation": [
+          {
+            "category": "generate_code_sample",
+            "description": "The user wants to generate code snippets without referencing the contents of the current workspace. This category does not include generating entire projects.",
+            "examples": [
+              "Write an example of computing a SHA256 hash."
+            ]
+          },
+          {
+            "category": "add_feature_to_file",
+            "description": "The user wants to change code in a file that is provided in their request, without referencing the contents of the current workspace. This category does not include generating entire projects.",
+            "examples": [
+              "Add a refresh button to the table widget."
+            ]
+          },
+          {
+            "category": "question_about_specific_files",
+            "description": "The user has a question about a specific file or code snippet that they have provided as part of their query, and the question does not require additional workspace context to answer.",
+            "examples": [
+              "What does this file do?"
+            ]
+          }
+        ]
+      },
+      "contentReferences": [],
+      "codeCitations": [],
+      "timestamp": 1757468204437,
+      "modelId": "copilot/claude-sonnet-4"
+    },
+    {
+      "requestId": "request_a9f5e493-5a01-498a-85e1-91f9a71cbb58",
+      "message": {
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 45
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 46
+            },
+            "text": "Can you give me a simplified list for an MVP.",
+            "kind": "text"
+          }
+        ],
+        "text": "Can you give me a simplified list for an MVP."
+      },
+      "variableData": {
+        "variables": []
+      },
+      "response": [
+        {
+          "value": "Here's a simplified MVP feature list for a production-ready CSV parser:\n\n## **Core MVP Features**\n\n### **Essential Parsing**\n- **Basic delimiters**: comma, semicolon, tab\n- **Quoted fields**: Handle `\"field with, comma\"`\n- **Escaped quotes**: Handle `\"He said \"\"Hello\"\"\"`\n- **Line endings**: `\\n`, `\\r\\n`, `\\r`\n- **Empty fields**: Handle missing values\n\n### **Input/Output**\n- **File input**: Read from file path\n- **String input**: Parse CSV strings directly\n- **Two output modes**: Array of arrays OR array of objects\n- **Header support**: First row as column names (optional)\n\n### **Basic Type Handling**\n- **String preservation**: Keep everything as strings by default\n- **Optional type coercion**: Numbers, booleans (`true/false`, `1/0`)\n- **Null handling**: Empty strings become `null` (configurable)\n\n### **Error Handling**\n- **Parse errors**: Clear error messages with line numbers\n- **Malformed quotes**: Graceful handling of unmatched quotes\n- **Inconsistent columns**: Handle rows with different field counts\n\n### **Developer Experience**\n- **TypeScript support**: Generic types for type-safe output\n- **Promise-based API**: Async file reading\n- **Simple configuration**: Minimal options object\n\n## **MVP API Example**\n\n````typescript\ninterface CSVOptions {\n  delimiter?: ',' | ';' | '\\t';\n  headers?: boolean;\n  skipEmptyLines?: boolean;\n  typeCoercion?: boolean;\n}\n\n// Simple usage\nconst data = await parseCSV('data.csv');\nconst typedData = await parseCSV<MyType>('data.csv', { \n  headers: true, \n  typeCoercion: true \n});\n````\n\n## **What to Skip for MVP**\n- Streaming (just load files into memory)\n- Custom quote characters (only `\"`)\n- Advanced type detection\n- Multi-line fields\n- Performance optimizations\n- Complex validation\n- Multiple input sources beyond files/strings\n\nThis MVP covers 80% of common use cases while keeping the implementation manageable and the API simple.",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/randy/brown/cs32/typescript-csv-randysim/",
+            "scheme": "vscode-remote",
+            "authority": "wsl+Ubuntu"
+          }
+        }
+      ],
+      "responseId": "response_ea12a711-480f-429b-8825-f2d59e7c5e58",
+      "result": {
+        "timings": {
+          "firstProgress": 1453,
+          "totalElapsed": 11559
+        },
+        "metadata": {
+          "codeBlocks": [
+            {
+              "code": "interface CSVOptions {\n  delimiter?: ',' | ';' | '\\t';\n  headers?: boolean;\n  skipEmptyLines?: boolean;\n  typeCoercion?: boolean;\n}\n\n// Simple usage\nconst data = await parseCSV('data.csv');\nconst typedData = await parseCSV<MyType>('data.csv', { \n  headers: true, \n  typeCoercion: true \n});\n",
+              "language": "typescript",
+              "markdownBeforeBlock": "Here's a simplified MVP feature list for a production-ready CSV parser:\n\n## **Core MVP Features**\n\n### **Essential Parsing**\n- **Basic delimiters**: comma, semicolon, tab\n- **Quoted fields**: Handle `\"field with, comma\"`\n- **Escaped quotes**: Handle `\"He said \"\"Hello\"\"\"`\n- **Line endings**: `\\n`, `\\r\\n`, `\\r`\n- **Empty fields**: Handle missing values\n\n### **Input/Output**\n- **File input**: Read from file path\n- **String input**: Parse CSV strings directly\n- **Two output modes**: Array of arrays OR array of objects\n- **Header support**: First row as column names (optional)\n\n### **Basic Type Handling**\n- **String preservation**: Keep everything as strings by default\n- **Optional type coercion**: Numbers, booleans (`true/false`, `1/0`)\n- **Null handling**: Empty strings become `null` (configurable)\n\n### **Error Handling**\n- **Parse errors**: Clear error messages with line numbers\n- **Malformed quotes**: Graceful handling of unmatched quotes\n- **Inconsistent columns**: Handle rows with different field counts\n\n### **Developer Experience**\n- **TypeScript support**: Generic types for type-safe output\n- **Promise-based API**: Async file reading\n- **Simple configuration**: Minimal options object\n\n## **MVP API Example**\n\n"
+            }
+          ],
+          "toolCallRounds": [
+            {
+              "response": "Here's a simplified MVP feature list for a production-ready CSV parser:\n\n## **Core MVP Features**\n\n### **Essential Parsing**\n- **Basic delimiters**: comma, semicolon, tab\n- **Quoted fields**: Handle `\"field with, comma\"`\n- **Escaped quotes**: Handle `\"He said \"\"Hello\"\"\"`\n- **Line endings**: `\\n`, `\\r\\n`, `\\r`\n- **Empty fields**: Handle missing values\n\n### **Input/Output**\n- **File input**: Read from file path\n- **String input**: Parse CSV strings directly\n- **Two output modes**: Array of arrays OR array of objects\n- **Header support**: First row as column names (optional)\n\n### **Basic Type Handling**\n- **String preservation**: Keep everything as strings by default\n- **Optional type coercion**: Numbers, booleans (`true/false`, `1/0`)\n- **Null handling**: Empty strings become `null` (configurable)\n\n### **Error Handling**\n- **Parse errors**: Clear error messages with line numbers\n- **Malformed quotes**: Graceful handling of unmatched quotes\n- **Inconsistent columns**: Handle rows with different field counts\n\n### **Developer Experience**\n- **TypeScript support**: Generic types for type-safe output\n- **Promise-based API**: Async file reading\n- **Simple configuration**: Minimal options object\n\n## **MVP API Example**\n\n````typescript\ninterface CSVOptions {\n  delimiter?: ',' | ';' | '\\t';\n  headers?: boolean;\n  skipEmptyLines?: boolean;\n  typeCoercion?: boolean;\n}\n\n// Simple usage\nconst data = await parseCSV('data.csv');\nconst typedData = await parseCSV<MyType>('data.csv', { \n  headers: true, \n  typeCoercion: true \n});\n````\n\n## **What to Skip for MVP**\n- Streaming (just load files into memory)\n- Custom quote characters (only `\"`)\n- Advanced type detection\n- Multi-line fields\n- Performance optimizations\n- Complex validation\n- Multiple input sources beyond files/strings\n\nThis MVP covers 80% of common use cases while keeping the implementation manageable and the API simple.",
+              "toolCalls": [],
+              "toolInputRetry": 0,
+              "id": "e5903655-8fb1-4e9a-8894-beb58f58c7da"
+            }
+          ],
+          "modelMessageId": "28943903-b39e-40bb-b620-9bb6fff5e36d",
+          "responseId": "03a4b081-b472-449d-9d98-4b0955f8522c",
+          "sessionId": "6e5a394a-03d0-4a88-ab72-790e1021e4d0",
+          "agentId": "github.copilot.default"
+        },
+        "details": "Claude Sonnet 4 • 1x"
+      },
+      "followups": [],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.default",
+        "description": "Ask or edit in context",
+        "metadata": {
+          "themeIcon": {
+            "id": "copilot"
+          },
+          "hasFollowups": false,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following participants which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted) in [Visual Studio Code](https://code.visualstudio.com/docs/copilot/overview). Or explore the [Copilot walkthrough](command:github.copilot.open.walkthrough).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start",
+                "github.copilot.open.walkthrough"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted": {
+                "$mid": 1,
+                "path": "/copilot/using-github-copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted"
+              },
+              "https://code.visualstudio.com/docs/copilot/overview": {
+                "$mid": 1,
+                "path": "/docs/copilot/overview",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              },
+              "command:github.copilot.open.walkthrough": {
+                "$mid": 1,
+                "path": "github.copilot.open.walkthrough",
+                "scheme": "command"
+              }
+            }
+          },
+          "supportIssueReporting": false,
+          "requester": {
+            "name": "randysim",
+            "icon": {
+              "$mid": 1,
+              "path": "/u/57469078",
+              "scheme": "https",
+              "authority": "avatars.githubusercontent.com",
+              "query": "v=4"
+            }
+          }
+        },
+        "name": "GitHubCopilot",
+        "fullName": "GitHub Copilot",
+        "isDefault": true,
+        "locations": [
+          "panel"
+        ],
+        "modes": [
+          "ask"
+        ],
+        "slashCommands": [],
+        "disambiguation": [
+          {
+            "category": "generate_code_sample",
+            "description": "The user wants to generate code snippets without referencing the contents of the current workspace. This category does not include generating entire projects.",
+            "examples": [
+              "Write an example of computing a SHA256 hash."
+            ]
+          },
+          {
+            "category": "add_feature_to_file",
+            "description": "The user wants to change code in a file that is provided in their request, without referencing the contents of the current workspace. This category does not include generating entire projects.",
+            "examples": [
+              "Add a refresh button to the table widget."
+            ]
+          },
+          {
+            "category": "question_about_specific_files",
+            "description": "The user has a question about a specific file or code snippet that they have provided as part of their query, and the question does not require additional workspace context to answer.",
+            "examples": [
+              "What does this file do?"
+            ]
+          }
+        ]
+      },
+      "contentReferences": [],
+      "codeCitations": [],
+      "timestamp": 1757468609915,
+      "modelId": "copilot/claude-sonnet-4"
+    }
+  ]
+}
